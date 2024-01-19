@@ -1,0 +1,30 @@
+.aside-nav {
+    width: 16rem;
+    background: #252222;
+    border: 2px dotted navy;
+    height: 700px;
+}
+
+.logo-p {
+    width: min-content;
+    height: auto;
+    color: rgb(0, 146, 0);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.logo-img {
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    border-radius: 100%;
+}
+
+section {
+    display: inline;
+}
+
+.link1  
+{
+    margin: auto;
+    width: 100%;
+}

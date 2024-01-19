@@ -1,0 +1,269 @@
+.inc-header {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: fit-content;
+}
+
+.slider-container {
+  width: 80%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  margin: auto;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.carousel-inner {
+  height: 550px;
+  margin: auto;
+  top: 120px;
+  width: 1300px;
+}
+
+.description {
+  width: auto;
+  height: max-content;
+  margin-left: 100px;
+  margin-top: 220px;
+}
+
+.dec {
+  font-size: 18px;
+}
+
+.card_div {
+  width: max-content;
+  height: max-content;
+  display: flex;
+  margin: auto;
+  padding: 20px 20px;
+}
+
+.card {
+  margin: 20px 20px;
+}
+
+/* larg size  */
+@media (min-width: 1900px) {
+  .card_div {
+    flex-wrap: wrap;
+    /* Allow cards to wrap to the next line */
+  }
+
+  .card {
+    flex: 1 1 45%;
+    margin: 10px;
+    /* Adjust the percentage based on your preference */
+  }
+}
+
+/* media query for mobiles  */
+
+/* Small screens (phones) */
+@media only screen and (max-width: 600px) {
+  /* Styles for screens up to 600px wide */
+
+  .inc-header {
+    position: static;
+    z-index: 1000;
+    width: 100%;
+  }
+
+  .logo {
+    width: 130px;
+    height: min-content;
+  }
+
+  .carousel-inner {
+    height: min-content;
+    margin: 20px auto;
+    width: 320px;
+    top: 0;
+  }
+
+  #carouselExample {
+    height: 230px;
+    margin: 0 auto;
+    padding: 0 0;
+  }
+
+  .description {
+    padding: 0px 1px;
+    margin: 2px 50px;
+  }
+  .dec {
+    font-size: 12px;
+    width: auto;
+  }
+
+  .about-h1 {
+    margin: 2px;
+    font-size: 22px;
+  }
+
+  .card_div {
+    width: 20rem;
+    margin: 10px auto;
+    display: inline;
+  }
+
+  .card {
+    width: 20rem;
+    border: 1px solid #ddd;
+    /* Add a border for a card-like appearance */
+    border-radius: 2px;
+    /* Optional: Add rounded corners */
+    overflow: hidden;
+    margin: 20px auto;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-img {
+    width: auto;
+    height: auto;
+  }
+
+  .card-body {
+    padding: 4px;
+  }
+
+  .card-title {
+    font-size: 2rem;
+    margin-bottom: 6px;
+  }
+
+  .card-text {
+    margin: 10px 10apx;
+    font-size: 11px;
+    color: #555;
+  }
+
+  .btn {
+    display: block;
+    padding: 2px 1px;
+    text-decoration: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+
+  .btn:hover {
+    background-color: #0056b3;
+  }
+}
+
+/* Medium screens (tablets) */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  /* Styles for screens between 601px and 900px wide */
+  
+  .inc-header {
+    position: static;
+    z-index: 1000;
+    width: 100%;
+  }
+
+  .logo {
+    width: 230px;
+    height: min-content;
+  }
+
+  .carousel-inner {
+    height: max-content;
+    margin: 20px auto;
+    width: 820px;
+    top: 0;
+  }
+
+  #carouselExample {
+    height: 230px;
+    margin: 0 auto;
+    padding: 0 0;
+  }
+
+  .description {
+    padding: 0px 1px;
+    margin: 2px 50px;
+  }
+  .dec {
+    font-size: 12px;
+    width: auto;
+  }
+
+  .about-h1 {
+    margin: 2px;
+    font-size: 22px;
+  }
+
+  .card_div {
+    width: 20rem;
+    margin: 10px auto;
+    display: inline;
+  }
+
+  .card {
+    width: 20rem;
+    border: 1px solid #ddd;
+    /* Add a border for a card-like appearance */
+    border-radius: 2px;
+    /* Optional: Add rounded corners */
+    overflow: hidden;
+    margin: 20px auto;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-img {
+    width: auto;
+    height: auto;
+  }
+
+  .card-body {
+    padding: 4px;
+  }
+
+  .card-title {
+    font-size: 2rem;
+    margin-bottom: 6px;
+  }
+
+  .card-text {
+    margin: 10px 10apx;
+    font-size: 11px;
+    color: #555;
+  }
+
+  .btn {
+    display: block;
+    padding: 2px 1px;
+    text-decoration: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+
+  .btn:hover {
+    background-color: #0056b3;
+  }
+}
+
+/* Large screens (desktops) */
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+  /* Styles for screens between 901px and 1200px wide */
+}
+
+/* Extra-large screens (large desktops or high-resolution displays) */
+@media only screen and (min-width: 1201px) {
+  /* Styles for screens wider than 1200px */
+}

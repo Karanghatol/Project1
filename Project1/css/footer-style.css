@@ -1,0 +1,29 @@
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSE
+* ==========================================
+*
+*/
+
+#body_id {
+  font-family: "Arial", sans-serif;
+  background: #ff5f6d;
+  background: -webkit-linear-gradient(to right, #ffffff, #c8f3ff);
+  background: linear-gradient(to right, #ffe0e0, #81cef3);
+  min-height: 100vh;
+}
+
+#button-addon1 {
+  color: #ffc371;
+}
+
+.form-control::placeholder {
+  font-size: 0.95rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+.form-control.shadow-0:focus {
+  box-shadow: none;
+}
