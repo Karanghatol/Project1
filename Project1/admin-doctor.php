@@ -58,17 +58,19 @@ if (isset($_POST['signup'])) {
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $sql = "SELECT * FROM doctor_table WHERE email = '$email' AND password = '$password'";
+    $sql = "SELECT name FROM doctor_table WHERE name = '$email' AND password = '$password'";
     $result = mysqli_query($con, $sql);
 
     if ($result) {
         $row = mysqli_fetch_assoc($result);
         if ($row) {
             // User found, set session variables or perform other actions
-            $_SESSION['id'] = $row['id']; // Assuming you have an 'id' column in your doctor_table
+            $_SESSION['email'] = $row['name']; // Assuming you have an 'email' column in your doctor_table
             echo '<script>';
             echo 'alert("User found");';
             echo '</script>';
+            include "dashboard.php";
+            // header("location: dashboard.php");
         } else {
             echo '<script>';
             echo 'alert("User not found");';
@@ -79,7 +81,7 @@ if (isset($_POST['login'])) {
     }
 
 }
-mysqli_close($con);
+// mysqli_close($con);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -109,18 +111,19 @@ mysqli_close($con);
         <div class="card login-card">
             <div class="card-body">
                 <h2 class="card-title text-center">Login</h2>
-                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+                <form action="dashboard.php" method="post">
                     <div class="form-group">
-                        <label for="username">Email</label>
+                        <label for="username">Username</label>
                         <input type="text" name="email" class="form-control" id="username"
                             placeholder="Enter your username">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" name="password" class="form-control" id="password"
+                        <input type="password" name="password_log" class="form-control" id="password"
                             placeholder="Enter your password">
                     </div>
                     <button type="submit" name="login" class="btn btn-primary btn-block">Login</button>
+                </form>
                     <br>
                     <center>
                         <div class="container mt-1">
@@ -129,7 +132,6 @@ mysqli_close($con);
                                 Register
                             </button>
                     </center>
-                </form>
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                     <!-- Modal -->
                     <div class="modal fade" id="popupFormModal" tabindex="-1" aria-labelledby="popupFormModalLabel"
