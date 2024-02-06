@@ -28,7 +28,7 @@
                 <div class="col-lg-12 mx-auto text-white text-center">
                     <h1 class="display-4"><b>B</b>ook<b>M</b>y<b>A</b>ppoint</h1>
                     <p class="lead mb-0">Find the best doctors and save your time.</p>
-                    <p class="lead">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white">
+                    <p class="lead">Snippet by <a href="https://www.instagram.com" class="text-white">
                             <u>Karan Ghatol</u></a>
                     </p>
                 </div>
@@ -43,8 +43,7 @@
         <div class="container py-5">
             <div class="row py-4">
                 <div class="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="img/logo.png" alt="" width="180" class="mb-3">
-                    <p class="font-italic text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                        eiusmod tempor incididunt.</p>
+                    <p class="font-italic text-muted">Follw us on social media and connect, make our bond stronger.</p>
                     <ul class="list-inline mt-4">
                         <li class="list-inline-item">
                             <a href="#" target="_blank" class="media-a" title="youtube">
@@ -113,8 +112,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6 mb-lg-0">
                     <h6 class="text-uppercase font-weight-bold mb-4">Newsletter</h6>
-                    <p class="text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque
-                        temporibus.</p>
+                    <p class="text-muted mb-4">Write any query if you have, let us know your UX(User Experiance) and share the feedback.</p>
                     <div class="p-1 rounded border">
                         <div class="input-group">
                             <input type="email" placeholder="Enter your email address" aria-describedby="button-addon1"
