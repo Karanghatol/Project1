@@ -13,9 +13,8 @@
     <link rel="stylesheet" href="css/index-style.css">
     <title>Home</title>
 </head>
-
 <body>
-    
+
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -95,6 +94,14 @@
                 </div>
             </div>
         </div>
+        <center>
+            <div class="booking-btn">
+                <h2>Book an Appointment</h2>
+                <a href="session-out.php">
+                    <button>Click Me</button>
+                </a>
+            </div>
+        </center>
         <script>
             const slider = document.querySelector('.carousel-item');
             let slideIndex = 0;
@@ -103,7 +110,6 @@
                 slideIndex = (slideIndex + 1) % slider.children.length;
                 updateSlider();
             }
-
             function updateSlider() {
                 const translateValue = -slideIndex * 100 + '%';
 
@@ -111,7 +117,6 @@
                     translateValue
                 })`;
             }
-
             // Automatically slide every 2 seconds (adjust as needed)
             setInterval(nextSlide, 2000);
         </script>
@@ -119,6 +124,5 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"></script>
     </body>
-
 </html>
 <?php include_once "footer.php"; ?>
