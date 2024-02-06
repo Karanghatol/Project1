@@ -2,9 +2,11 @@
 include "header.php";
 include "dbcon.php";
 
-// session_start();
+
+// Start the session
+session_start();
 if (isset($_SESSION['id']) && $_SESSION['id'] !== "") {
-    header("Location: index.php");
+    header("location: index.php");
     exit();
 }
 
@@ -14,8 +16,8 @@ if (isset($_POST['signup'])) {
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $mobile = mysqli_real_escape_string($con, $_POST['mobile']);
 
-    $select = mysqli_real_escape_string($con, $_POST['select']);
-    list($specializationId, $specializationName) = explode(' ', $select);
+    $select = $_POST['select'];
+    list($specializationName) = explode(' ', $select);
 
     $password = md5(mysqli_real_escape_string($con, $_POST['password']));
     $cpassword = md5(mysqli_real_escape_string($con, $_POST['cpassword']));
@@ -40,6 +42,14 @@ if (isset($_POST['signup'])) {
     }
 
     if (empty($name_error) && empty($email_error) && empty($mobile_error) && empty($password_error) && empty($cpassword_error)) {
+        $sql2 = "SELECT name from doctor_table where name = '$name'";
+        $res = mysqli_query($con, $sql2);
+        if (mysqli_num_rows($res) > 0) {
+            echo '<script>alert("Data already exists. Insert different data.");</script>';
+            echo '<script>window.location.href = "admin-doctor.php"; </script>';
+            exit();
+        }
+
         $sql = "INSERT into `doctor_table` values('', '$name', '$mobile', '$email', '$select', '$password')";
         if (mysqli_query($con, $sql)) {
             echo '<script>';
@@ -56,16 +66,18 @@ if (isset($_POST['signup'])) {
 
 // LOGIN 
 if (isset($_POST['login'])) {
-    $email = $_POST['email'];
+    $email = $_POST['name'];
+    $name = $_POST['name'];
     $password = $_POST['password'];
-    $sql = "SELECT name FROM doctor_table WHERE name = '$email' AND password = '$password'";
+    $sql = "SELECT email, name FROM doctor_table WHERE email = '$email' OR name = '$name' AND password = '$password'";
     $result = mysqli_query($con, $sql);
 
     if ($result) {
         $row = mysqli_fetch_assoc($result);
         if ($row) {
             // User found, set session variables or perform other actions
-            $_SESSION['email'] = $row['name']; // Assuming you have an 'email' column in your doctor_table
+            $_SESSION['name'] = $row['name']; // Assuming you have an 'email' column in your doctor_table
+            $_SESSION['name'] = $row['email']; // Assuming you have an 'email' column in your doctor_table
             echo '<script>';
             echo 'alert("User found");';
             echo '</script>';
@@ -110,11 +122,11 @@ if (isset($_POST['login'])) {
     <div class="container">
         <div class="card login-card">
             <div class="card-body">
-                <h2 class="card-title text-center">Login</h2>
+                <h2 class="card-title text-center">Login Doctor</h2>
                 <form action="dashboard.php" method="post">
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" name="email" class="form-control" id="username"
+                        <input type="text" name="name" class="form-control" id="username"
                             placeholder="Enter your username">
                     </div>
                     <div class="form-group">
@@ -124,14 +136,14 @@ if (isset($_POST['login'])) {
                     </div>
                     <button type="submit" name="login" class="btn btn-primary btn-block">Login</button>
                 </form>
-                    <br>
-                    <center>
-                        <div class="container mt-1">
-                            Don't have account
-                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#popupFormModal">
-                                Register
-                            </button>
-                    </center>
+                <br>
+                <center>
+                    <div class="container mt-1">
+                        Don't have account
+                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#popupFormModal">
+                            Register
+                        </button>
+                </center>
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                     <!-- Modal -->
                     <div class="modal fade" id="popupFormModal" tabindex="-1" aria-labelledby="popupFormModalLabel"
@@ -181,7 +193,7 @@ if (isset($_POST['login'])) {
                                                     <label>Specialization</label>
                                                     <br>
                                                     <?php
-                                                    $query = "SELECT id, specialization FROM specialization_table";
+                                                    $query = "SELECT specialization FROM specialization_table";
                                                     $result = $con->query($query);
 
                                                     echo '<select name="select">';
