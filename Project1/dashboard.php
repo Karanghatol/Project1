@@ -1,18 +1,28 @@
-<?php
-$email = $_POST['email'];
-?>
+<div class="nav-div">
+    <?php
+    session_start();
+    include "dashboard-nav.php";
+    if (isset($_SESSION['name']) && ($_SESSION['name'] == "name" || $_SESSION['email'] == "email")) {
+        echo "<script>alert(' " . $_POST["name"] . "')</script>";
+    }
 
+    ?>
+</div>
+<?php
+$email = $_POST['name'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Welcome Page</title>
-    <!-- Bootstrap CSS -->
+    <title>Dadshboard</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        body {
+        body,
+        html {
+            height: 100%;
             margin: 0;
             padding: 0;
             background-color: #343a40;
@@ -20,98 +30,64 @@ $email = $_POST['email'];
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        .welcome-container {
-            position: fixed;
-            top: 20px;
-            /* Adjust top position as needed */
-            right: 250px;
-            /* Adjust right position as needed */
-            text-align: center;
-            animation-name: fadeInUp;
-        }
-
         .welcome-heading {
-            font-size: 48px;
-            font-weight: bold;
-            color: #007bff;
-            margin-bottom: 20px;
-        }
-
-        .welcome-text {
             font-size: 20px;
-            margin-bottom: 40px;
+            font-style: initial;
+            color: #007bff;
+            padding-top: 30px;
         }
 
-        /* Advanced CSS Animations */
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(18px);
-                visibility: visible;
-            }
-            20% {
-                opacity: 0.2;
-                transform: translateY(16px);
-                visibility: visible;
-            }
-            40% {
-                opacity: 0.4;
-                transform: translateY(14px);
-                visibility: visible;
-            }
-            60% {
-                opacity: 0.6;
-                transform: translateY(12px);
-                visibility: visible;
-            }
-            80% {
-                opacity: 0.8;
-                transform: translateY(5px);
-                visibility: visible;
-            }
-            
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-                visibility: hidden;
-            } 
+        .dash-aside {
+            width: 250px;
+            height: 100%;
+            background-color: darkolivegreen;
         }
 
-        .animated {
-            animation-duration: 1s;
-            animation-fill-mode: both;
+        .nav-div {
+            width: 100%;
+            height: max-content;
+        }
+        .app-link {
+            width: 99%;
+            padding: 10%;
         }
 
-        .fadeInUp {
-            animation-name: fadeInUp;
+        .a-app{
+            margin: 30px 80px;
         }
     </style>
 </head>
 
 <body>
-
-    <div class="container welcome-container animated fadeInUp">
-        <h1 class="welcome-heading">Welcome <span style="color: #fff;">Mr. <p id="name">
-                    <?php echo $email; ?>
-                </p></span></h1>
-        <p class="welcome-text">Explore exciting content and connect with a vibrant community.</p>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            let nameElement = document.getElementById('name');
-            if (nameElement) {
-                nameElement.innerText = nameElement.innerText.toUpperCase();
-            }
-        });
-    </script>
-
-    hello f dds fidsfhds
-
-    <!-- Bootstrap JS and dependencies -->
+    <aside class="dash-aside">
+        <div class="container">
+            <h1 class="welcome-heading">Welcome <span style="color: #fff;font-style: italic;"><u>
+                        <?php echo $email; ?>
+                    </u>
+                </span></h1>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                let nameElement = document.getElementById('name');
+                if (nameElement) {
+                    nameElement.innerText = nameElement.innerText.toUpperCase();
+                }
+            });
+        </script>
+        <br>
+        <section class="app-link">
+            <a href="" class=".a-app">All appointments</a><br>
+            <a href="" class=".a-app">booked appointment</a><br>
+            <a href="" class=".a-app">new appointment</a><br>
+            <a href="" class=".a-app">pending appointment</a><br>
+            <a href="" class=".a-app">cancelled appointment</a><br>
+        </section>
+    </aside>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <?php session_abort(); ?>
 </body>
 
 </html>
