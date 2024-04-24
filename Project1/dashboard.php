@@ -1,15 +1,14 @@
-<div class="nav-div">
-    <?php
-    session_start();
-    include "dashboard-nav.php";
-    if (isset($_SESSION['name']) && ($_SESSION['name'] == "name" || $_SESSION['email'] == "email")) {
-        echo "<script>alert(' " . $_POST["name"] . "')</script>";
-    }
-
-    ?>
-</div>
 <?php
-$email = $_POST['name'];
+include "dashboard-nav.php";
+
+include "dbcon.php";
+
+session_start();
+
+if(!isset($_SESSION["name"])) {
+    echo "<script>alert(' f kffk');</script>";
+    header("location: session-out.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,12 +46,13 @@ $email = $_POST['name'];
             width: 100%;
             height: max-content;
         }
+
         .app-link {
             width: 99%;
             padding: 10%;
         }
 
-        .a-app{
+        .a-app {
             margin: 30px 80px;
         }
     </style>

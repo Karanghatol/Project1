@@ -66,23 +66,21 @@ if (isset($_POST['signup'])) {
 
 // LOGIN 
 if (isset($_POST['login'])) {
-    $email = $_POST['name'];
     $name = $_POST['name'];
     $password = $_POST['password'];
-    $sql = "SELECT email, name FROM doctor_table WHERE email = '$email' OR name = '$name' AND password = '$password'";
-    $result = mysqli_query($con, $sql);
+    $sql3 = "SELECT name FROM doctor_table WHERE name = ? AND password = ?";
+    $result = mysqli_query($con, $sql3);
 
     if ($result) {
         $row = mysqli_fetch_assoc($result);
         if ($row) {
             // User found, set session variables or perform other actions
-            $_SESSION['name'] = $row['name']; // Assuming you have an 'email' column in your doctor_table
-            $_SESSION['name'] = $row['email']; // Assuming you have an 'email' column in your doctor_table
+            $_SESSION['name'] = $row['name'];
             echo '<script>';
             echo 'alert("User found");';
             echo '</script>';
-            include "dashboard.php";
-            // header("location: dashboard.php");
+            // include "dashboard.php";
+            header("location: dashboard.php");
         } else {
             echo '<script>';
             echo 'alert("User not found");';
@@ -131,7 +129,7 @@ if (isset($_POST['login'])) {
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" name="password_log" class="form-control" id="password"
+                        <input type="password" name="password" class="form-control" id="password"
                             placeholder="Enter your password">
                     </div>
                     <button type="submit" name="login" class="btn btn-primary btn-block">Login</button>

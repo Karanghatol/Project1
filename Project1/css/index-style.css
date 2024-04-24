@@ -54,6 +54,14 @@
   margin: 20px 20px;
 }
 
+.booking-btn {
+  margin: 30px 10px;
+  padding: 30px 30px;
+  height: max-content;
+  color: red;
+  width: min-content;
+}
+
 /* larg size  */
 @media (min-width: 1900px) {
   .card_div {
@@ -167,7 +175,7 @@
 /* Medium screens (tablets) */
 @media only screen and (min-width: 601px) and (max-width: 900px) {
   /* Styles for screens between 601px and 900px wide */
-  
+
   .inc-header {
     position: static;
     z-index: 1000;
